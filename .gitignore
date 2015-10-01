@@ -1,32 +1,36 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+#Unity Generated
+[Tt]emp/
+[Ll]ibrary/
+[Bb]uild/
+[Ee]xported[Oo]bj/
+[Oo]bj/
+sysinfo.txt
 
-# Precompiled Headers
-*.gch
-*.pch
+#IDE generated
+*.csproj
+*.tmproj
+*.pidb
+*.sln
+*.userprefs
+*.svd
+*.suo
+*.user
+*.unityproj
+*.booproj
+*.swp
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+#GIT generated
+*.orig
+*.orig.meta
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*.MERGED.*
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
+#OS Generated
+.DS_Store
+.DS_Store?
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+._*
