@@ -18,13 +18,21 @@ public class PlayerNetStartup : NetworkBehaviour
 		 * So here we turn them all back on IF IT'S US. 
 		 * */
 
-		if (isLocalPlayer) {
-			GameObject.Find ("Scene Camera").SetActive (false);
-			GetComponent<CharacterController> ().enabled = true;
-			GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().enabled = true;
-			FPSCam.enabled = true;
-			audioListener.enabled = true;
+
+	}
+	void OnLevelWasLoaded(int level)
+	{
+		if (level == 1) 
+		{
+			if (isLocalPlayer) {
+				GameObject.Find ("Scene Camera").SetActive (false);
+				GetComponent<CharacterController> ().enabled = true;
+				GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().enabled = true;
+				FPSCam.enabled = true;
+				audioListener.enabled = true;
+			}
 		}
 	}
+
 
 }

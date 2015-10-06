@@ -27,6 +27,7 @@ public class Player : NetworkBehaviour {
 	[SyncVar]
 	public Color color;
 
+
 	// Use this for initialization
 	void Start () {
 		playerTransform = GetComponent<CharacterController> ().transform;

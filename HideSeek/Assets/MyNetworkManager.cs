@@ -29,7 +29,26 @@ public class MyNetworkManager: NetworkManager
 
 	public bool isHost;
 	
-	
+
+
+	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
+	{
+
+		if (isHost) {
+			Debug.Log ("ETESTS");
+			GameObject hider = (GameObject)Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);	
+			hider.AddComponent<Hider>();
+			hider.GetComponent<Hider>().color=Color.black;
+			NetworkServer.AddPlayerForConnection(conn, hider, playerControllerId);
+		} else {
+			GameObject seeker = (GameObject)Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);	
+			seeker.AddComponent<Seeker>();
+			seeker.GetComponent<Seeker>().color=Color.red;
+			NetworkServer.AddPlayerForConnection(conn, seeker, playerControllerId);
+		}
+	}
+
+
 	void Start ()
 	{
 		print ("MyNetworkManager : Start");
@@ -62,8 +81,9 @@ public class MyNetworkManager: NetworkManager
 		SetPort ();
 		SetUsername ();
 		NetworkManager.singleton.StartHost ();
+
 	}
-	
+
 	public void JoinGame ()
 	{
 		print ("clicked button, join game");
@@ -72,6 +92,7 @@ public class MyNetworkManager: NetworkManager
 		SetPort ();
 		SetUsername ();
 		NetworkManager.singleton.StartClient ();
+		//ClientScene.AddPlayer ();
 	}
 	
 	public void Disconnect ()
@@ -87,6 +108,7 @@ public class MyNetworkManager: NetworkManager
 			SetupLoginButtons ();
 		} else {
 			SetupChatSceneButtons ();
+			ClientScene.AddPlayer (client.connection,0);
 		}
 	}
 	

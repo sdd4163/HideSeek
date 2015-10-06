@@ -32,7 +32,7 @@ public class PlayerSyncPosition : NetworkBehaviour
 	void Start ()
 	{
 
-		RTTText = GameObject.Find ("RTT Text").GetComponent<Text> ();
+		//RTTText = GameObject.Find ("RTT Text").GetComponent<Text> ();
 		lerpRate = normalLerpRate;
 		nwClient = NetworkManager.singleton.client;
 	}
@@ -45,7 +45,7 @@ public class PlayerSyncPosition : NetworkBehaviour
 	void Update ()
 	{
 		LerpPosition ();
-		ShowLatency ();
+	//	ShowLatency ();
 	}
 	
 	// FixedUpdate will fire at regular intervals, making it a good place
@@ -129,14 +129,14 @@ public class PlayerSyncPosition : NetworkBehaviour
 
 
 
-	void ShowLatency ()
-	{
-		if (isLocalPlayer) { 
-			RTTText.text = "Round Trip Time: " + nwClient.GetRTT ().ToString ();
-		} else {
-			RTTText.text = "";
-		}
-	}
+	//void ShowLatency ()
+	//{
+	//	if (isLocalPlayer) { 
+	//		RTTText.text = "Round Trip Time: " + nwClient.GetRTT ().ToString ();
+	//	} else {
+	//		RTTText.text = "";
+	//	}
+	//}
 
 }
 
