@@ -8,21 +8,20 @@ using UnityEngine.EventSystems;
 
 public class PlayerManager : MonoBehaviour {
 
-	private MyNetworkManager netManager;
-	private bool isHider = false;
+	//private Player[] players;
+	//public Player[] Players {
+	//	get {
+	//		return players;
+	//	}
+	//}
 
 	// Use this for initialization
 	void Start () {
-		netManager = GameObject.Find ("NetManager").GetComponent<MyNetworkManager>();
-		if (netManager.isHost) {
-			isHider = true;
-		}
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0) && !isHider) {
-			print ("clicked");
-		}
+
 	}
 }

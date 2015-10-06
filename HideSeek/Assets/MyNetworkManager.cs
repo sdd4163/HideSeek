@@ -44,7 +44,7 @@ public class MyNetworkManager: NetworkManager
 	//get input from text input fields
 	void SetIPAddress ()
 	{
-		string ipAddress = GameObject.Find ("txtIP").transform.FindChild ("Text").GetComponent<Text> ().text;
+		//string ipAddress = GameObject.Find ("txtIP").transform.FindChild ("Text").GetComponent<Text> ().text;
 		NetworkManager.singleton.networkAddress = "127.0.0.1";//ipAddress;
 	}
 	
