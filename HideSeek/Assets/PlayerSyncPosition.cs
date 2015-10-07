@@ -18,8 +18,7 @@ public class PlayerSyncPosition : NetworkBehaviour
 	private float lerpRate;
 	private float normalLerpRate = 16;
 	private float fasterLerpRate = 27;
-	
-	private Text RTTText;
+
 	private NetworkClient nwClient ;
 
 	//variables to only send data when it's changed beyond a threshold.
@@ -31,8 +30,6 @@ public class PlayerSyncPosition : NetworkBehaviour
 	
 	void Start ()
 	{
-
-		//RTTText = GameObject.Find ("RTT Text").GetComponent<Text> ();
 		lerpRate = normalLerpRate;
 		nwClient = NetworkManager.singleton.client;
 	}

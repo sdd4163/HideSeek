@@ -13,6 +13,9 @@ public class PlayerManager : MonoBehaviour {
 	//	get {
 	//		return players;
 	//	}
+	//	set {
+	//		players = value;
+	//	}
 	//}
 
 	// Use this for initialization
@@ -22,6 +25,7 @@ public class PlayerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		//players [0] = GameObject.Find ("Hider").GetComponent<Hider>();
+		//Debug.Log (players [0].GetComponent<Hider>().PlayerID);
 	}
 }

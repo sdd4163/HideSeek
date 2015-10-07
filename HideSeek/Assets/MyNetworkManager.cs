@@ -28,31 +28,35 @@ public class MyNetworkManager: NetworkManager
 	public string GetUsername(){return username;}
 
 	public bool isHost;
-	
-
+	private short playerCount = 0;
 
 	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
 	{
-
 		if (isHost) {
 			Debug.Log ("ETESTS");
-			GameObject hider = (GameObject)Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);	
+			GameObject hider = (GameObject)Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+			hider.name = "Hider";
 			hider.AddComponent<Hider>();
-			hider.GetComponent<Hider>().color=Color.black;
+			hider.GetComponent<Hider>().color = Color.black;
+			hider.GetComponent<Hider>().PlayerID = playerControllerId;
 			NetworkServer.AddPlayerForConnection(conn, hider, playerControllerId);
+			isHost = false;
 		} else {
-			GameObject seeker = (GameObject)Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);	
+			Debug.Log ("ETESTS2");
+			GameObject seeker = (GameObject)Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+			seeker.name = "Seeker";
 			seeker.AddComponent<Seeker>();
-			seeker.GetComponent<Seeker>().color=Color.red;
+			seeker.GetComponent<Seeker>().color = Color.red;
+			seeker.GetComponent<Seeker>().PlayerID = playerControllerId;
 			NetworkServer.AddPlayerForConnection(conn, seeker, playerControllerId);
 		}
+		playerCount++;
 	}
 
 
 	void Start ()
 	{
 		print ("MyNetworkManager : Start");
-		
 	}
 	
 	void SetUsername()
@@ -81,7 +85,6 @@ public class MyNetworkManager: NetworkManager
 		SetPort ();
 		SetUsername ();
 		NetworkManager.singleton.StartHost ();
-
 	}
 
 	public void JoinGame ()
@@ -92,7 +95,6 @@ public class MyNetworkManager: NetworkManager
 		SetPort ();
 		SetUsername ();
 		NetworkManager.singleton.StartClient ();
-		//ClientScene.AddPlayer ();
 	}
 	
 	public void Disconnect ()
@@ -108,7 +110,9 @@ public class MyNetworkManager: NetworkManager
 			SetupLoginButtons ();
 		} else {
 			SetupChatSceneButtons ();
-			ClientScene.AddPlayer (client.connection,0);
+			Debug.Log(playerCount);
+			ClientScene.AddPlayer (client.connection, playerCount);
+			Debug.Log(playerCount);
 		}
 	}
 	

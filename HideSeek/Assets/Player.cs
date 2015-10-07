@@ -21,7 +21,7 @@ public class Player : NetworkBehaviour {
 		}
 	}
 
-	protected int abilityID;
+	public int abilityID;
 	protected PlayerManager playManager;
 
 	[SyncVar]

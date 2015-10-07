@@ -18,11 +18,11 @@ public class Seeker : Player {
 	}
 
 	void Tag () {
-		//float distance = Vector3.Distance (playManager.Players [0].PlayerTransform.position, this.playerTransform.position);
-		//if (distance < 2.0f) {
-		//	Debug.Log ("Tagged");
-		//} else {
-		//	Debug.Log("Not Tagged");
-		//}
+		float distance = Vector3.Distance (GameObject.Find ("Hider").GetComponent<Hider>().PlayerTransform.position, this.playerTransform.position);
+		if (distance < 2.0f) {
+			Debug.Log ("Tagged");
+		} else {
+			Debug.Log("Not Tagged");
+		}
 	}
 }
